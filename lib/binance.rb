@@ -24,7 +24,7 @@ module Binance
       build_result response
     end
 
-    def my_trades(symbol = 'LTCBTC', options = {})
+    def my_trades(symbol, options = {})
       params = {
         symbol: symbol,
         limit: options.fetch(:limit, 500),
@@ -54,13 +54,11 @@ module Binance
     end
 
     def build_result(response)
-      p '_____________________________________________________________________________'
-      puts response
-      JSON.parse response
+      response
     end
 
     def combine_account_assets_to_symbols
-      assets = account['balances'].map { |balance| balance['asset'] }
+      assets = JSON.parse(account)['balances'].map { |balance| balance['asset'] }
       assets.product(assets).map do |combination|
         combination.join unless combination[0] == combination[1]
       end.compact
