@@ -18,12 +18,12 @@ namespace '/api/v1' do
   end
 
   get '/account' do
-    Binance::API.account
+    Binance.account
   end
   get '/my_trades' do
-    Binance::API.my_trades(params[:symbol], limit: params[:limit], from_id: params[:from_id])
+    Binance.my_trades(params[:symbol], limit: params[:limit], from_id: params[:from_id])
   end
   get '/all_my_trades' do
-    Binance::API.all_my_trades
+    Binance.all_my_trades
   end
 end
