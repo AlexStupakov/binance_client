@@ -8,3 +8,6 @@ Simple application, that can get user account and user trades from binance.com.
 ## Run
 * run `bundle exec ruby server.rb` within a project folder
 * open in browser http://localhost:4567
+
+## Run tests
+`bundle exec rspec`
