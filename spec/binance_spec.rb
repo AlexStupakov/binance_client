@@ -1,7 +1,7 @@
 require 'spec_helper'
 require './lib/binance'
 
-describe 'Binance' do
+describe 'Binance::API' do
 
   describe 'account' do
     it 'should return response body' do
@@ -10,7 +10,7 @@ describe 'Binance' do
       stub_request(:get, /#{endpoint}.*/).
         to_return(status: 200, body: body, headers: {})
 
-      expect(Binance.account).to eq JSON.parse body
+      expect(Binance::API.account).to eq JSON.parse body
     end
   end
 
@@ -21,7 +21,7 @@ describe 'Binance' do
       stub_request(:get, /#{endpoint}.*/).
         to_return(status: 200, body: body, headers: {})
 
-      expect(Binance.my_trades).to eq JSON.parse body
+      expect(Binance::API.my_trades).to eq JSON.parse body
     end
   end
 
@@ -38,7 +38,18 @@ describe 'Binance' do
         to_return(status: 200, body: body, headers: {})
 
       all_my_trades_body = JSON.parse "[#{body},#{body}]"
-      expect(Binance.all_my_trades).to eq all_my_trades_body
+      expect(Binance::API.all_my_trades).to eq all_my_trades_body
+    end
+  end
+
+  describe 'combine_account_assets_to_symbols' do
+    it 'should combine all the account currencies' do
+      endpoint = "https://api.binance.com/api/v3/account"
+      body = '{"balances":[{"asset":"BTC"},{"asset":"LTC"},{"asset":"ATC"}]}'
+      stub_request(:get, /#{endpoint}.*/).
+          to_return(status: 200, body: body, headers: {})
+
+      expect(Binance::API.send :combine_account_assets_to_symbols).to eq ["BTCLTC", "BTCATC", "LTCBTC", "LTCATC", "ATCBTC", "ATCLTC"]
     end
   end
 end
