@@ -4,7 +4,8 @@ require 'uri'
 require 'json'
 require 'dotenv/load'
 
-class Binance
+module Binance
+  extend self
   BASE_URL = 'https://api.binance.com'.freeze
 
   def account
@@ -17,9 +18,9 @@ class Binance
   def all_my_trades(options = {})
     response = combine_account_assets_to_symbols.map do |symbol|
       my_trades(symbol, options)
-    end
+    end.to_json
 
-    build_result response.to_s
+    build_result response
   end
 
   def my_trades(symbol = 'LTCBTC', options = {})
@@ -79,5 +80,3 @@ class Binance
     params.merge(signature: signature)
   end
 end
-
-Binance.new.all_my_trades

@@ -10,7 +10,7 @@ describe 'Binance' do
       stub_request(:get, /#{endpoint}.*/).
         to_return(status: 200, body: body, headers: {})
 
-      expect(Binance.new.account).to eq JSON.parse body
+      expect(Binance.account).to eq JSON.parse body
     end
   end
 
@@ -21,7 +21,7 @@ describe 'Binance' do
       stub_request(:get, /#{endpoint}.*/).
         to_return(status: 200, body: body, headers: {})
 
-      expect(Binance.new.my_trades).to eq JSON.parse body
+      expect(Binance.my_trades).to eq JSON.parse body
     end
   end
 
@@ -38,7 +38,7 @@ describe 'Binance' do
         to_return(status: 200, body: body, headers: {})
 
       all_my_trades_body = JSON.parse "[#{body},#{body}]"
-      expect(Binance.new.all_my_trades).to eq all_my_trades_body
+      expect(Binance.all_my_trades).to eq all_my_trades_body
     end
   end
 end
