@@ -3,10 +3,12 @@ language: ruby
 rvm:
   - 2.5.1
 
-
 build:
   ci:
     - cp .env.example .env
     - bundle install
     - bundle exec rake
 
+branches:
+  only:
+    - master
