@@ -6,5 +6,5 @@ rvm:
 build:
   ci:
     - bundle install
-    - bundle exec rake test
+    - bundle exec rake
 
