@@ -1,10 +1,12 @@
 language: ruby
 
 rvm:
-  - 2.5.1
+  - 2.4.1
+
 
 build:
   ci:
+    - cp .env.example .env
     - bundle install
-    - bundle exec rake test
+    - bundle exec rake
 
