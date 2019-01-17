@@ -6,6 +6,7 @@ rvm:
 
 build:
   ci:
+    - cp .env.example .env
     - bundle install
     - bundle exec rake
 
