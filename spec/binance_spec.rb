@@ -9,7 +9,7 @@ describe 'Binance' do
       stub_request(:get, /#{endpoint}.*/)
         .to_return(status: 200, body: body, headers: {})
 
-      expect(Binance.account).to eq body
+      expect(Binance.account).to eq body + "bla"
     end
   end
 
