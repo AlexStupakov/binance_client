@@ -3,9 +3,12 @@ language: ruby
 rvm:
   - 2.5.1
 
+before_script:
+  - gem install bundler
+
+
 build:
   ci:
-    - gem install bundler
     - bundle install
     - bundle exec rake
 
