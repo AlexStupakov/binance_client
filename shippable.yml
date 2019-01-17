@@ -1,0 +1,10 @@
+language: ruby
+
+rvm:
+  - 2.5.1
+
+build:
+  ci:
+    - bundle install
+    - bundle exec rake test
+

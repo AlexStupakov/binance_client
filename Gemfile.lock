@@ -39,6 +39,7 @@ GEM
     rack-protection (2.0.4)
       rack
     rainbow (3.0.0)
+    rake (12.3.2)
     rest-client (2.0.2)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
@@ -97,6 +98,7 @@ PLATFORMS
 
 DEPENDENCIES
   dotenv
+  rake
   rest-client
   rspec
   rubocop
