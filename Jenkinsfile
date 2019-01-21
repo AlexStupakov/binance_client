@@ -9,6 +9,8 @@ pipeline {
         */
         // sh 'jenkins.sh'
         dir(srcDir){
+          sh 'pwd',
+          sh 'ls -al',
           sh 'cdr=$(pwd); $cdr/jenkins.sh'
         }
       }
