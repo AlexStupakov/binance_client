@@ -8,7 +8,7 @@ pipeline {
         * using `true` to allow the Pipeline to continue nonetheless
         */
         // sh 'jenkins.sh'
-        sh 'cdr=$(pwd); $cdr/jenkins.sh'
+        sh 'bash jenkins.sh'
       }
     }
   }
